@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes Editora</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalhes Editora</h1>
+    <a href="/">Menu</a>
+    <a href="/editoras">Editoras</a>
+    <br>
+    <br>
+    <b>Id Editora: </b> <span th:text="${editora.id}"></span>
+	<br><b>Nome: </b> <span th:text="${editora.nome}"></span>
+	<br><b>Endereço: </b> <span th:text="${editora.endereco}"></span>
+	<br><b>Telefone: </b> <span th:text="${editora.telefone}"></span>
+	<br><b>Data de criação: </b> <span th:text="${editora.data_criacao}"></span>
+    
+    <br>
+    <br>
+    Livros:
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+			<th>Edição</th>
+			<th>Páginas</th>
+			<th>Categoria</th>
+            <th>Remover</th>
+            <th>Editar</th>
+        </tr>
+       
+        <tr th:each="livro : ${livros}">
+            <td th:text="${livro.id}"></td>
+			<td th:text="${livro.nome}"></td>
+			<td th:text="${livro.edicao}"></td>
+			<td th:text="${livro.qtde_paginas}"></td>
+			<td th:text="${livro.categoria}"></td>
+        </tr>
+    </table>
+    <br>
+</body>
+</html>

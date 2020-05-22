@@ -27,9 +27,9 @@
         <input type="number" placeholder="Digite a edição" th:value="${livro.edicao}" name="edicao" required/>
 
         <label> Quantidade de páginas:</label>
-        <input type="text" placeholder="Digite a quantidade de páginas" th:value="${livro.qtde_paginas}" name="qtde_paginas" required/>
+        <input type="number" placeholder="Digite a quantidade de páginas" th:value="${livro.qtde_paginas}" name="qtde_paginas" required/>
 
-        <label> Ocupação:</label>
+        <label> Categoria:</label>
         <input type="text" placeholder="Digite a categoria" th:value="${livro.categoria}" name="categoria" required/>
          
         <!-- <label>Curso:</label>
@@ -52,17 +52,22 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Livro</th>
+			<th>Edição</th>
+			<th>Páginas</th>
+			<th>Categoria</th>
             <th>Remover</th>
             <th>Editar</th>
         </tr>
        
-        <tr th:each="autor : ${autores}">
-            <td th:text="${autor.id}"></td>
-            <td th:text="${autor.nome}"></td>
-            <td>teste</td><!-- <td th:text="${autor.livro?.nome}"></td> -->
-            <td> <a th:href="@{'/removerAutor?id=' + ${autor.id}}">Remover</a></td>
-            <td> <a th:href="@{'/editarAutor?id=' + ${autor.id}}">Editar</a></td>
+        <tr th:each="livro : ${livros}">
+            <td th:text="${livro.id}"></td>
+			<td th:text="${livro.nome}"></td>
+			<td th:text="${livro.edicao}"></td>
+			<td th:text="${livro.qtde_paginas}"></td>
+			<td th:text="${livro.categoria}"></td>
+            
+            <td> <a th:href="@{'/removerLivro?id=' + ${livro.id}}">Remover</a></td>
+            <td> <a th:href="@{'/editarLivro?id=' + ${livro.id}}">Editar</a></td>
         </tr>
     </table>
 </body>

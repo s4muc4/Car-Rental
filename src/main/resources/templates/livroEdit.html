@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros</title>
+    
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Editar Livro</h1>    
+    <a href="/">Menu</a>
+    <a href="/livros">Voltar</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarLivro}" th:object="${livro}" method="POST" id="formLivro">
+      
+        <label>ID:</label> <span th:text="${livro.id}"></span>
+        <br>
+        <input type="hidden" th:value="${livro.id}" th:field="${livro.id}" name="id" />
+      
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite o nome" th:value="${livro.nome}" name="nome" required/>
+		<br>  
+		
+		<label>Edição:</label>
+        <input type="number" placeholder="Digite a edição" th:value="${livro.edicao}" name="edicao" required/>
+		<br>  
+
+		<label>Quantidade de páginas:</label>
+        <input type="number" placeholder="Digite a quantidade de páginas" th:value="${livro.qtde_paginas}" name="qtde_paginas" required/>
+		<br>  
+		
+		<label>Categoria:</label>
+        <input type="text" placeholder="Digite a categoria" th:value="${livro.categoria}" name="categoria" required/>
+        <br>  
+		
+
+        <!-- <label>Curso:</label>
+        <select th:field="${aluno.curso}" required>
+            <option value="">Escolha o curso</option>
+            <option th:each="curso : ${cursos}"
+                        th:value="${curso.id}"
+                        th:text="${curso.nome}">
+            </option>
+        </select> -->
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Cancelar"/>
+    </form>
+    
+</body>
+
+</html>

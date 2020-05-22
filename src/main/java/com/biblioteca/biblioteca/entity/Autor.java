@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
@@ -26,14 +27,14 @@ public class Autor implements Serializable {
 	private String nacionalidade;
 	private String ocupacao;
 	
-	/* @OneToMany
+	@ManyToMany
     @JoinTable(
         name="AutorLivros", 
-        uniqueConstraints = @UniqueConstraint(columnNames = { "codigo_autor", "id_livro" }),
+        uniqueConstraints = @UniqueConstraint(columnNames = { "id_autor", "id_livro" }),
         joinColumns        = @JoinColumn(name = "id_autor"), 
-        inverseJoinColumns = @JoinColumn(name = "codigo_livro")
+        inverseJoinColumns = @JoinColumn(name = "id_livro")
     )
-    private List<Livro> livros; */
+    private List<Livro> livros; 
 	
 
 	public Autor(String nome, int idade, String nacionalidade, String ocupacao) {

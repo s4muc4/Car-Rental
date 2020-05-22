@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editoras</title>
+    
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Editar Editora</h1>    
+    <a href="/">Menu</a>
+    <a href="/editoras">Voltar</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarEditora}" th:object="${editora}" method="POST" id="formEditora">
+      
+        <label>ID:</label> <span th:text="${editora.id}"></span>
+        <br>
+        <input type="hidden" th:value="${editora.id}" th:field="${editora.id}" name="id" />
+      
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite o nome" th:value="${editora.nome}" name="nome" required/>
+		<br>  
+		
+		<label>Endereço:</label>
+        <input type="text" placeholder="Digite o endereço" th:value="${editora.endereco}" name="endereco" required/>
+		<br>  
+
+		<label>telefone:</label>
+        <input type="tel" placeholder="Digite o telefone" th:value="${editora.telefone}" name="telefone" required/>
+		<br>  
+		
+		<label>Data de criação:</label>
+        <input type="date" placeholder="Digite a data de criação" th:value="${editora.data_criacao}" name="data_criacao" required/>
+        <br>  
+		
+
+        <!-- <label>Curso:</label>
+        <select th:field="${aluno.curso}" required>
+            <option value="">Escolha o curso</option>
+            <option th:each="curso : ${cursos}"
+                        th:value="${curso.id}"
+                        th:text="${curso.nome}">
+            </option>
+        </select> -->
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Cancelar"/>
+    </form>
+    
+</body>
+
+</html>

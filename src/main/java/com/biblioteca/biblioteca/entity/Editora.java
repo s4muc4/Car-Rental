@@ -27,11 +27,8 @@ public class Editora implements Serializable {
 	private String data_criacao;
 
 	@OneToMany
-    @JoinTable(
-        name="EditoraLivros", 
-        uniqueConstraints = @UniqueConstraint(columnNames = { "id_editora", "id_livro" }),
-        joinColumns        = @JoinColumn(name = "id_editora" ),
-        inverseJoinColumns = @JoinColumn(name = "id_livro")
+    @JoinColumn(
+        name="EditoraLivros"
     )
     private List<Livro> livros;
 
@@ -40,7 +37,7 @@ public class Editora implements Serializable {
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.data_criacao = data_criacao;
-	}
+	} 
 
 	@Override
 	public String toString() {
@@ -78,5 +75,16 @@ public class Editora implements Serializable {
 
 	public void setData_criacao(String data_criacao) {
 		this.data_criacao = data_criacao;
+	}
+
+	public Editora() {
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
