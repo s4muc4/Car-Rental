@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros</title>
+    
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Cadastro de Livros</h1>    
+    <a href="/">Menu</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarLivro}" th:object="${livro}" method="POST" id="formLivro">
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite o nome" th:value="${livro.nome}" name="nome" required/>
+
+        <label> Edição:</label>
+        <input type="number" placeholder="Digite a edição" th:value="${livro.edicao}" name="edicao" required/>
+
+        <label> Quantidade de páginas:</label>
+        <input type="text" placeholder="Digite a quantidade de páginas" th:value="${livro.qtde_paginas}" name="qtde_paginas" required/>
+
+        <label> Ocupação:</label>
+        <input type="text" placeholder="Digite a categoria" th:value="${livro.categoria}" name="categoria" required/>
+         
+        <!-- <label>Curso:</label>
+
+         <select th:field="${autor.livro}" required>
+            <option value="">Escolha o livro</option>
+            <option th:each="livro : ${livros}"
+                        th:value="${livro.id}"
+                        th:text="${livro.nome}">
+            </option>
+        </select>  --> 
+
+
+        <input type="submit" value="Salvar" />
+        <input type="reset"  value="Limpar" />
+    </form>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Livro</th>
+            <th>Remover</th>
+            <th>Editar</th>
+        </tr>
+       
+        <tr th:each="autor : ${autores}">
+            <td th:text="${autor.id}"></td>
+            <td th:text="${autor.nome}"></td>
+            <td>teste</td><!-- <td th:text="${autor.livro?.nome}"></td> -->
+            <td> <a th:href="@{'/removerAutor?id=' + ${autor.id}}">Remover</a></td>
+            <td> <a th:href="@{'/editarAutor?id=' + ${autor.id}}">Editar</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>
