@@ -41,16 +41,42 @@
 		<label>Categoria:</label>
         <input type="text" placeholder="Digite a categoria" th:value="${livro.categoria}" name="categoria" required/>
         <br>  
-		
+        
+        <input type="hidden" th:value="${livro.autores}" th:field="${livro.autores}" name="autores" />
 
-        <!-- <label>Curso:</label>
-        <select th:field="${aluno.curso}" required>
-            <option value="">Escolha o curso</option>
-            <option th:each="curso : ${cursos}"
-                        th:value="${curso.id}"
-                        th:text="${curso.nome}">
+        <label>Editora:</label>
+
+         <select th:field="${livro.editora}" required>
+            <option value="">Escolha a editora</option>
+            <option th:each="editora : ${editoras}"
+                        th:value="${editora.id}"
+                        th:text="${editora.nome}">
             </option>
-        </select> -->
+        </select> 
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Nacionalidade</th>
+                <th>Ocupação</th>
+                <th>Remover</th>
+            </tr>
+           
+            <tr th:each="autor : ${livro.autores}">
+                <td th:text="${autor.id}"></td>
+                <td th:text="${autor.nome}"></td>
+                <td th:text="${autor.idade}"></td>
+                <td th:text="${autor.nacionalidade}"></td>
+                <td th:text="${autor.ocupacao}"></td>
+                <!-- <td th:text="${autor.livro?.nome}"></td> -->
+                <td> <a th:href="@{'/removerLivroAutor/' + ${livro.id} + '/' + ${autor.id}}">Remover</a></td>
+                
+            </tr>
+        </table>
+
+        
 
         <br>
         <br>

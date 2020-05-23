@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes Livro</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalhes Livro</h1>
+    <a href="/">Menu</a>
+    <a href="/livros">Livros</a>
+    <br>
+    <br>
+    <b>Id Livro: </b> <span th:text="${livro.id}"></span>
+	<br><b>Nome: </b> <span th:text="${livro.nome}"></span>
+	<br><b>Edição: </b> <span th:text="${livro.edicao}"></span>
+	<br><b>Quantidade de páginas: </b> <span th:text="${livro.qtde_paginas}"></span>
+	<br><b>Categoria: </b> <span th:text="${livro.categoria}"></span>
+    
+    <br>
+    <br>
+    Autores:
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+			<th>Idade</th>
+			<th>Nacionalidade</th>
+			<th>Ocupação</th>
+        </tr>
+       
+        <tr th:each="autor : ${livro.autores}">
+            <td th:text="${autor.id}"></td>
+			<td th:text="${autor.nome}"></td>
+			<td th:text="${autor.idade}"></td>
+			<td th:text="${autor.nacionalidade}"></td>
+			<td th:text="${autor.ocupacao}"></td>
+        </tr>
+	</table>
+	<form th:action="@{/associarAutor(var=${livro.id})}" method="POST">
+		<label><b>Autor: </b></label>
+		<select name="id" required>
+			<option value="">Escolha o autor</option>
+			<option th:each="autor:${autoresNaoAssociados}"
+						th:value="${autor.id}"
+						th:text="${autor.nome}">
+			</option>
+		</select>
+		<input type="submit" value="Associar Autor" />
+	</form>
+    <br>
+</body>
+</html>

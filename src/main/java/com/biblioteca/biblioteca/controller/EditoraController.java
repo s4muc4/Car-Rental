@@ -56,12 +56,13 @@ public class EditoraController {
    
 	}
 	
-	@GetMapping("/detalhesEditora/{id}")
-    public ModelAndView getEditoraDetalhes(@PathVariable(name = "id") Integer id) {
+	@GetMapping("/detalhesEditora")
+    public ModelAndView getEditoraDetalhes(@RequestParam Integer id) {
         
         Editora editora = editoraService.getEditoraById(id);
         ModelAndView mv = new ModelAndView("detalhesEditora");
-        mv.addObject("editora", editora);
+		mv.addObject("editora", editora);
+		mv.addObject("livros", livroService.getLivros());
 
         return mv;
     }

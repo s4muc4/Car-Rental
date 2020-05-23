@@ -67,7 +67,7 @@
             <td th:text="${editora.telefone}"></td>
             <td th:text="${editora.data_criacao}"></td>
 			<!-- <td th:text="${autor.livro?.nome}"></td> -->
-			<td> <a th:href="@{'/detalhesEditora/' + ${editora.id}}">Detalhes</a></td>
+			<td> <a th:href="@{'/detalhesEditora?id=' + ${editora.id}}">Detalhes</a></td>
             <td> <a th:href="@{'/removerEditora?id=' + ${editora.id}}">Remover</a></td>
             <td> <a th:href="@{'/editarEditora?id=' + ${editora.id}}">Editar</a></td>
         </tr>

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri May 22 17:06:57 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-3dfe-ee17-000006cf92a0 
+Fri May 22 20:59:12 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-3ed3-8fd9-0000064fe8c0 
 on database directory C:\Users\PICHAU\Desktop\estudos\POO\biblioteca\180207 with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
 Loaded from file:/C:/Users/PICHAU/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation

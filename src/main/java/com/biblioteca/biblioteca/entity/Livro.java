@@ -30,12 +30,12 @@ public class Livro implements Serializable {
 	private String categoria;
 	
 	@ManyToMany
-    @JoinTable(
-        name="LivroAutores", 
-        uniqueConstraints = @UniqueConstraint(columnNames = { "id_livro", "id_autor" }),
-        joinColumns        = @JoinColumn(name = "id_livro" ),
+	@JoinTable(
+        name="AutorLivros", 
+        uniqueConstraints = @UniqueConstraint(columnNames = { "id_autor", "id_livro" }),
+        joinColumns        = @JoinColumn(name = "id_livro"), 
         inverseJoinColumns = @JoinColumn(name = "id_autor")
-    )
+	)
 	private List<Autor> autores;
 	
 	@ManyToOne
@@ -98,6 +98,26 @@ public class Livro implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Autor> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(List<Autor> autores) {
+		this.autores = autores;
+	}
+
+	public Editora getEditora() {
+		return editora;
+	}
+
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

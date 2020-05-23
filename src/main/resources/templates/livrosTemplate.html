@@ -32,15 +32,17 @@
         <label> Categoria:</label>
         <input type="text" placeholder="Digite a categoria" th:value="${livro.categoria}" name="categoria" required/>
          
-        <!-- <label>Curso:</label>
+        <label>Editora:</label>
 
-         <select th:field="${autor.livro}" required>
-            <option value="">Escolha o livro</option>
-            <option th:each="livro : ${livros}"
-                        th:value="${livro.id}"
-                        th:text="${livro.nome}">
+         <select th:field="${livro.editora}" required>
+            <option value="">Escolha a editora</option>
+            <option th:each="editora : ${editoras}"
+                        th:value="${editora.id}"
+                        th:text="${editora.nome}">
             </option>
-        </select>  --> 
+        </select>  
+
+        
 
 
         <input type="submit" value="Salvar" />
@@ -53,8 +55,10 @@
             <th>ID</th>
             <th>Nome</th>
 			<th>Edição</th>
-			<th>Páginas</th>
-			<th>Categoria</th>
+            <th>Páginas</th>
+            <th>Editora</th>
+            <th>Categoria</th>
+            <th>Detalhes</th>
             <th>Remover</th>
             <th>Editar</th>
         </tr>
@@ -63,9 +67,10 @@
             <td th:text="${livro.id}"></td>
 			<td th:text="${livro.nome}"></td>
 			<td th:text="${livro.edicao}"></td>
-			<td th:text="${livro.qtde_paginas}"></td>
+            <td th:text="${livro.qtde_paginas}"></td>
+            <td th:text="${livro.editora?.nome}"></td>
 			<td th:text="${livro.categoria}"></td>
-            
+            <td> <a th:href="@{'/detalhesLivro?id=' + ${livro.id}}">Detalhes</a></td>
             <td> <a th:href="@{'/removerLivro?id=' + ${livro.id}}">Remover</a></td>
             <td> <a th:href="@{'/editarLivro?id=' + ${livro.id}}">Editar</a></td>
         </tr>

@@ -87,4 +87,16 @@ public class Editora implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

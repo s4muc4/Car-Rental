@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 import com.biblioteca.biblioteca.entity.Autor;
+import com.biblioteca.biblioteca.entity.Livro;
 import com.biblioteca.biblioteca.service.AutorService;
 //import com.biblioteca.biblioteca.service.LivroService;
+import com.biblioteca.biblioteca.service.LivroService;
 
 
 @Controller
@@ -19,8 +23,8 @@ public class AutorController {
 	@Autowired
     private AutorService autorService;
 
-    /* @Autowired
-    private LivroService livroService; */
+    @Autowired
+    private LivroService livroService; 
     
     @GetMapping("/autores")
     public ModelAndView getAutores(){
@@ -54,6 +58,25 @@ public class AutorController {
 
         return mv;
    
+    }
+
+    @GetMapping("/detalhesAutor")
+    public ModelAndView getAutorDetalhes(@RequestParam Integer id) {
+        
+        Autor autor = autorService.getAutorById(id);
+        ModelAndView mv = new ModelAndView("detalhesAutor");
+		mv.addObject("autor", autor);
+        
+        List<Livro> livrosALL = livroService.getLivros();
+
+        livrosALL.removeAll(autor.getLivros());
+
+        mv.addObject("livrosNaoAssociados", livrosALL);
+
+        System.out.println(mv.toString());
+        
+        System.out.println(autor.getLivros().toString());
+        return mv;
     }
 
 

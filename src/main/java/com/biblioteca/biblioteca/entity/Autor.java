@@ -33,7 +33,8 @@ public class Autor implements Serializable {
         uniqueConstraints = @UniqueConstraint(columnNames = { "id_autor", "id_livro" }),
         joinColumns        = @JoinColumn(name = "id_autor"), 
         inverseJoinColumns = @JoinColumn(name = "id_livro")
-    )
+	)
+	
     private List<Livro> livros; 
 	
 
@@ -97,6 +98,14 @@ public class Autor implements Serializable {
 
 	public void setOcupacao(String ocupacao) {
 		this.ocupacao = ocupacao;
+	}
+
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
 	}
 
 }

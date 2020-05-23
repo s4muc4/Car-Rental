@@ -55,6 +55,7 @@
             <th>Idade</th>
             <th>Nacionalidade</th>
             <th>Ocupação</th>
+            <th>Detalhes</th>
             <th>Remover</th>
             <th>Editar</th>
         </tr>
@@ -65,7 +66,7 @@
             <td th:text="${autor.idade}"></td>
             <td th:text="${autor.nacionalidade}"></td>
             <td th:text="${autor.ocupacao}"></td>
-            <!-- <td th:text="${autor.livro?.nome}"></td> -->
+            <td> <a th:href="@{'/detalhesAutor?id=' + ${autor.id}}">Detalhes</a></td>
             <td> <a th:href="@{'/removerAutor?id=' + ${autor.id}}">Remover</a></td>
             <td> <a th:href="@{'/editarAutor?id=' + ${autor.id}}">Editar</a></td>
         </tr>
